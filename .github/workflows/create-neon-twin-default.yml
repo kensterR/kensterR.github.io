@@ -27,4 +27,4 @@ jobs:
       - name: Dump from RDS and Restore to Neon
         run: |
           $POSTGRES/pg_dump "${{ env.PROD_DATABASE_URL }}" -Fc -f "${{ github.workspace }}/prod-dump-file.dump"
-          $POSTGRES/pg_restore -d "${{ env.DEV_DATABASE_URL }}" --clean --no-owner --no-acl --if-exists "${{ github.workspace }}/prod-dump-file.dump"
+          $POSTGRES/pg_restore -d "${{ env.DEV_DATABASE_URL }}" -C --clean --no-owner --no-acl --if-exists "${{ github.workspace }}/prod-dump-file.dump"
